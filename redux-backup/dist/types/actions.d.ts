@@ -1,4 +1,4 @@
-import { Action } from "../../node_modules/redux";
+import { Action } from "redux";
 export declare enum types {
     REDUX_RESTORE_BACKUP_ACTION_TYPE = "@@_REDUX_RESTORE/BACKUP",
     REDUX_RESTORE_RESTORE_ACTION_TYPE = "@@_REDUX_RESTORE/RESTORE",
