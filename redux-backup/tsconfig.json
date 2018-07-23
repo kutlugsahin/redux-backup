@@ -2,7 +2,8 @@
 	"compilerOptions": {
 		"module": "commonjs",
 		"jsx": "react",
-		"declaration": true
+		"declaration": true,
+		"declarationDir": "../types"
 	},
 	"exclude": [
 		"node_modules"
