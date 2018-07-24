@@ -1,7 +1,9 @@
 import * as React from 'react';
 import './App.css';
-
+import Reducer from 'redux-backup';
 import logo from './logo.svg';
+
+console.log(Reducer);
 
 class App extends React.Component {
   public render() {

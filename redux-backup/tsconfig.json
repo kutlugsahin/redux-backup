@@ -3,7 +3,7 @@
 		"module": "commonjs",
 		"jsx": "react",
 		"declaration": true,
-		"declarationDir": "../types"
+		"declarationDir": "../types",
 	},
 	"exclude": [
 		"node_modules"
