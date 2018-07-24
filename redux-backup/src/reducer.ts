@@ -2,8 +2,6 @@ import { Action, Reducer } from "redux";
 import { types, ReduxBackupAction, BackupRestorePayload } from "./actions";
 import { initStore } from "./storage";
 
-const DEFAULT_BACKUP_LABEL = 'DEFAULT_BACKUP_LABEL';
-
 const getPayload = (action: Action): BackupRestorePayload => {
 	const backupAction = action as ReduxBackupAction;
 	return backupAction.payload;
@@ -13,18 +11,13 @@ const handleReduxBackupAction = <TState, TAction extends Action>(_reducerName: s
 	const store = initStore<TState>(_reducerName);
 
 	return (state: TState, action: TAction): TState | undefined => {
-
 		if (action.type === types.REDUX_RESTORE_BACKUP_ACTION_TYPE) {
-			const { reducerName, label = DEFAULT_BACKUP_LABEL } = getPayload(action);
-			return reducerName === _reducerName ? store.backup(state, label) : state;
+			return store.backup(state, getPayload(action));
 		} else if (action.type === types.REDUX_RESTORE_RESTORE_ACTION_TYPE) {
-			const { reducerName, label = DEFAULT_BACKUP_LABEL } = getPayload(action);
-			return reducerName === _reducerName ? store.restore(state, label) : state;
+			return store.restore(state, getPayload(action));
 		} else if (action.type === types.REDUX_RESTORE_CLEAR_ACTION_TYPE) {
-			const { reducerName } = getPayload(action);
-			return reducerName === _reducerName ? store.clear(state) : state;
+			return store.clear(state, getPayload(action));
 		}
-
 
 		return undefined;
 	}
