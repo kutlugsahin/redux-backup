@@ -50,6 +50,6 @@ const defaultStore = <TState>(): Store<TState> => {
 	}
 }
 
-export const initStore = <TState>(reducerName: string, userStore?: Store<TState>): Store<TState> => {
-	return filterStore(reducerName, userStore || defaultStore());
+export const initStore = <TState>(reducerName: string, store: Store<TState> = defaultStore()): Store<TState> => {
+	return filterStore(reducerName, store);
 }
