@@ -19,9 +19,9 @@ const mapActionTypeToStoreFunction = <TState, TAction extends Action>(store: Sto
 
 const handleReduxBackupAction = <TState, TAction extends Action>(_reducerName: string) => {
 	const store = initStore<TState>(_reducerName);
-	const storeFunctionMap = mapActionTypeToStoreFunction(store);
+	const getStoreFunctionByAction = mapActionTypeToStoreFunction(store);
 	return (state: TState, action: TAction): TState | undefined => {
-		const storeFunction = storeFunctionMap(action);
+		const storeFunction = getStoreFunctionByAction(action);
 		return storeFunction ? storeFunction(state, getPayload(action)) : undefined;
 	}
 }
