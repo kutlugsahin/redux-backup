@@ -1,8 +1,12 @@
 var path = require('path');
+var CopyWebpackPlugin = require('copy-webpack-plugin')
+
+var libPath = path.resolve(__dirname, '..', 'redux-backup');
+
 module.exports = {
-	entry: path.join(__dirname, 'src', 'index.ts'),
+	entry: path.join(libPath, 'src', 'index.ts'),
 	output: {
-		path: path.resolve(__dirname, 'dist/'),
+		path: path.resolve(libPath, 'dist/'),
 		filename: 'index.js'
 	},
 	resolve: {
@@ -15,6 +19,12 @@ module.exports = {
 			{ test: /\.tsx?$/, loader: "ts-loader" }
 		]
 	},
+	plugins: [
+		new CopyWebpackPlugin([{
+			from: path.resolve(__dirname, '../README.md'),
+			to: path.resolve(__dirname, 'README.md')
+		}]),
+	],
 	externals: {
 		react: {
 			commonjs: 'react',

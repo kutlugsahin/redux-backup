@@ -49,14 +49,15 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "build:lib": "webpack -p --config redux-backup/webpack.config.js",
-    "publish": "npm publish redux-backup"
+    "build:lib": "webpack -p --config config/webpack.config.lib.js",
+    "publish": "npm run build:lib && npm publish redux-backup"
   },
   "devDependencies": {
     "@types/jest": "^23.3.0",
     "@types/node": "^10.5.2",
     "@types/react": "^16.4.6",
     "@types/react-dom": "^16.0.6",
+    "copy-webpack-plugin": "^4.5.2",
     "typescript": "^2.9.2"
   },
   "jest": {
