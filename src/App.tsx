@@ -21,14 +21,22 @@ class App extends React.Component<AppProps> {
     const { user } = this.props;
     return (
       <div className="App">
-        <h1>Redux-Backup</h1>
-        <div>
-          <UserList />
-          <div>
-            <button className="btn btn-primary btn-sm" onClick={() => this.props.restoreUserReducer()}>revert</button>
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <h1>Redux-Backup</h1></div>
           </div>
-          <div>
-            <button onClick={() => this.props.backupUserReducer()}>backup</button>
+          <div className="row">
+            <div className="col">
+              <div className="user-list-box">
+                <UserList />
+              </div>
+            </div>
+            <div className="col">
+              <div className="backup-box">
+                
+              </div>
+            </div>
           </div>
         </div>
       </div>

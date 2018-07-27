@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  
 }
 
 .App-logo {
@@ -21,6 +21,19 @@
 .App-intro {
   font-size: large;
 }
+
+.title {
+
+}
+.user-list-box {
+  width: 350px;
+}
+
+.backup-box {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

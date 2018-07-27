@@ -8,6 +8,7 @@
   },
   "rules": {
     // override tslint-react rules here
-    "jsx-no-lambda": false
+    "jsx-no-lambda": false,
+    "jsx-self-close": false
   }
 }
