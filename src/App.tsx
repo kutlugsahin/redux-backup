@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 import { updateUser, User, restoreUserReducer, backupUserReducer } from './store/users';
 import UserList from './UserList';
+import Panel from './Panel';
 
 interface AppProps {
   user?: User;
@@ -34,7 +35,7 @@ class App extends React.Component<AppProps> {
             </div>
             <div className="col">
               <div className="backup-box">
-                
+                <Panel />
               </div>
             </div>
           </div>
