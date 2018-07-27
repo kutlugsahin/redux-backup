@@ -1,12 +1,8 @@
 import { Action, Reducer } from "redux";
-import { types, ReduxBackupAction, BackupRestorePayload } from "./actions";
-import { initStore, Store, RestoreHandler } from "./storage";
+import { ReduxBackupPayload, ReduxBackupAction, types, Store, RestoreHandler } from "./types";
+import { initStore } from "./storage";
 
-export interface BackupReducerOptions<TState> {
-	store: Store<TState>;
-}
-
-const getPayload = (action: Action): BackupRestorePayload => {
+const getPayload = (action: Action): ReduxBackupPayload => {
 	const backupAction = action as ReduxBackupAction;
 	return backupAction.payload;
 }
@@ -14,7 +10,7 @@ const getPayload = (action: Action): BackupRestorePayload => {
 const mapActionTypeToStoreFunction = <TState, TAction extends Action>(store: Store<TState>) => {
 	const map = {
 		[types.REDUX_RESTORE_BACKUP_ACTION_TYPE]: store.backup,
-		[types.REDUX_RESTORE_CLEAR_ACTION_TYPE]: store.clear,
+		[types.REDUX_RESTORE_DELETE_ACTION_TYPE]: store.deleteBackup,
 		[types.REDUX_RESTORE_RESTORE_ACTION_TYPE]: store.restore,
 	}
 

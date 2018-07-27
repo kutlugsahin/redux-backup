@@ -2,7 +2,8 @@ import * as React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
-import { updateUser, User, restoreUserReducer, backupUserReducer } from './store/user';
+import { updateUser, User, restoreUserReducer, backupUserReducer } from './store/users';
+import UserList from './UserList';
 
 interface AppProps {
   user?: User;
@@ -22,16 +23,9 @@ class App extends React.Component<AppProps> {
       <div className="App">
         <h1>Redux-Backup</h1>
         <div>
-          <div className="formline">
-            <label htmlFor="">name</label>
-            <input type="text" value={user.name} onChange={this.updateUser('name')}/>
-          </div>
-          <div className="formline">
-            <label htmlFor="">lastname</label>
-            <input type="text" value={user.lastname} onChange={this.updateUser('lastname')} />            
-          </div>
+          <UserList />
           <div>
-            <button onClick={() => this.props.restoreUserReducer()}>revert</button>
+            <button className="btn btn-primary btn-sm" onClick={() => this.props.restoreUserReducer()}>revert</button>
           </div>
           <div>
             <button onClick={() => this.props.backupUserReducer()}>backup</button>

@@ -1,10 +1,12 @@
 import Reducer from './reducer';
-import { backupState, restoreState, clearBackups } from './actions';
+import { backupState, restoreState, deleteBackup } from './actions';
+import { types } from './types';
 
 export default Reducer;
 
 export {
 	backupState,
 	restoreState,
-	clearBackups
+	deleteBackup,
+	types as actionTypes
 }

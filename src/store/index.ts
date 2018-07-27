@@ -1,9 +1,9 @@
 import { createStore, Action, combineReducers } from 'redux';
 import backup from 'redux-backup';
 
-import userReducer, { USER_REDUCER_KEY } from './user';
+import userReducer from './users';
 
 
 export default createStore(combineReducers({
-	user: backup(userReducer, USER_REDUCER_KEY),
-}));
+	users: userReducer,
+}), (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__());

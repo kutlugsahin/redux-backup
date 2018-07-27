@@ -1,18 +1,8 @@
-import { BackupRestorePayload } from "./actions";
-
-const DEFAULT_BACKUP_LABEL = 'DEFAULT_BACKUP_LABEL';
-
-export type Handler<TS> = (state: TS, payload: BackupRestorePayload) => void;
-export type RestoreHandler<TS> = (state: TS, payload: BackupRestorePayload) => TS;
-
-export interface Store<TS> {
-	backup: Handler<TS>;
-	restore: RestoreHandler<TS>;
-	clear: Handler<TS>;
-}
+import { MemoryStore } from "./stores";
+import { Handler, ReduxBackupPayload, Store, RestoreHandler } from "./types";
 
 const filterReducer = (reducerName: string) => <TS>(handler: Handler<TS>): Handler<TS> => {
-	return (state: TS, payload: BackupRestorePayload) => {
+	return (state: TS, payload: ReduxBackupPayload) => {
 		let handlerResult = null;
 		if (reducerName === payload.reducerName) {
 			handlerResult = handler(state, payload);
@@ -21,35 +11,15 @@ const filterReducer = (reducerName: string) => <TS>(handler: Handler<TS>): Handl
 	}
 }
 
-const filterStore = <TS>(reducerName: string, { restore, backup, clear }: Store<TS>): Store<TS> => {
+const filterStore = <TS>(reducerName: string, store: Store<TS>): Store<TS> => {
 	const filter = filterReducer(reducerName);
 	return {
-		backup: filter(backup),
-		restore: filter(restore) as RestoreHandler<TS>,
-		clear: filter(clear)
+		backup: filter(store.backup),
+		restore: filter(store.restore) as RestoreHandler<TS>,
+		deleteBackup: filter(store.deleteBackup)
 	};
 }
 
-const defaultStore = <TState>(): Store<TState> => {
-	let store: any = {};
-	return {
-		backup: (state: TState, { label = DEFAULT_BACKUP_LABEL }: BackupRestorePayload) => {
-			store[label] = JSON.stringify(state);
-		},
-		restore: (state: TState, { label = DEFAULT_BACKUP_LABEL }: BackupRestorePayload) => {
-			const stored = store[label];
-			if (stored) {
-				return JSON.parse(stored);
-			} else {
-				return state;
-			}
-		},
-		clear: (state: TState) => {
-			store = {};
-		}
-	}
-}
-
-export const initStore = <TState>(reducerName: string, store: Store<TState> = defaultStore()): Store<TState> => {
+export const initStore = <TState>(reducerName: string, store: Store<TState> = new MemoryStore()): Store<TState> => {
 	return filterStore(reducerName, store);
 }
