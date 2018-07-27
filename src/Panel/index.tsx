@@ -22,11 +22,9 @@ class Panel extends React.Component<PanelProps> {
 	render() {
 		return (
 			<div className="row">
-				<div className="col">
-					<div className="action-buttons">
-						<button className="btn btn-primary wide" onClick={this.backup}>Backup</button>
-					</div>
-					<BackupList items={this.props.backups} onBackupClick={this.restore} /></div>
+				<div className="col">					
+					<BackupList items={this.props.backups} onBackupClick={this.restore} />
+				</div>
 			</div>
 		)
 	}

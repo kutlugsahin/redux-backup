@@ -5,18 +5,21 @@ import { Dispatch, bindActionCreators } from 'redux';
 import { updateUser, User, restoreUserReducer, backupUserReducer } from './store/users';
 import UserList from './UserList';
 import Panel from './Panel';
+import { Backup } from './store/backup';
 
 interface AppProps {
   user?: User;
   updateUser?: (user: User) => any;
   restoreUserReducer?: any;
   backupUserReducer?: any;
+  backups: Backup[];
 }
 
 class App extends React.Component<AppProps> {
   constructor(props: AppProps) {
     super(props);
     this.updateUser = this.updateUser.bind(this);
+    this.backup = this.backup.bind(this);
   }
   public render() {
     const { user } = this.props;
@@ -27,14 +30,21 @@ class App extends React.Component<AppProps> {
             <div className="col">
               <h1>Redux-Backup</h1></div>
           </div>
+          <br/>
           <div className="row">
             <div className="col">
               <div className="user-list-box">
+                <h3>Users</h3>
                 <UserList />
+                <br/>
+                <div className="action-buttons">
+                  <button className="btn btn-outline-primary btn-block" onClick={this.backup}>Backup Users</button>
+                </div>
               </div>
             </div>
             <div className="col">
               <div className="backup-box">
+                <h3>Backups</h3>
                 <Panel />
               </div>
             </div>
@@ -51,6 +61,17 @@ class App extends React.Component<AppProps> {
       this.props.updateUser(newUser as User);
     }
   }
+
+  backup() {
+    const { backups, backupUserReducer } = this.props;
+    const lastBackup = backups[backups.length - 1];
+    let nextVersion = 1;
+    if (lastBackup) {
+      nextVersion = (+lastBackup.label.split(' ')[1]) + 1;
+    }
+
+    backupUserReducer(`Backup:Label ${nextVersion}`);
+  }
 }
 
 function mapDispatch(dispatch: Dispatch) {
@@ -63,7 +84,8 @@ function mapDispatch(dispatch: Dispatch) {
 
 function mapsState(store) {
   return {
-    user: store.user
+    user: store.user,
+		backups: store.backups
   }
 }
 
