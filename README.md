@@ -85,7 +85,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(UserList);
 
 # API
 
-### withBackup
+## withBackup
 ```js 
 import { withBackup } from 'redux-restore';
 ```
@@ -101,7 +101,7 @@ function withBackup(reducer, reducerName, store)
 #### returns
 - **reducer**: enhanced reducer
 
-### backupState
+## backupState
 The action creater to backup the reducer targeted with reducerName.
 ```js 
 import { backupState } from 'redux-restore';
@@ -115,7 +115,7 @@ function backupState(reducerName, label)
 #### returns
 - **action**: A redux action to be dispatched.
 
-### restoreState
+## restoreState
 The action creater to backup the reducer targeted with reducerName.
 ```js 
 import { restoreState } from 'redux-restore';
@@ -129,7 +129,7 @@ function restoreState(reducerName, label)
 #### returns
 - **action**: A redux action to be dispatched.
 
-### deleteBackup
+## deleteBackup
 The action creater to backup the reducer targeted with reducerName.
 ```js 
 import { deleteBackup } from 'redux-restore';
@@ -145,3 +145,53 @@ function deleteBackup(reducerName, label)
 
 
 ## Store
+The object that you can provide withBackup function to customize how states will be backup and restored. Store object must have three functions namely **backup** **restore** **deleteBackup** which will be called with respect to dispatched actions.
+```js
+const store = {
+  backup,
+  restore,
+  deleteBackup
+}
+```
+### backup
+```js
+function backup(state, payload){
+  // backup logic...
+}
+```
+#### parameters
+- **state**: The state of the original reducer
+- **payload**: redux-backup action payload
+    - reducerName: string: name of the reducer
+    - label: string: label for backup
+#### returns
+- **void**
+
+### restore
+```js
+function restore(state, payload){
+  // custom restore logic ...
+  return newState;
+}
+```
+#### parameters
+- **state**: The state of the original reducer
+- **payload**: redux-backup action payload
+    - reducerName: string: name of the reducer
+    - label: string: label for backup
+#### returns
+- **state**: restored state of the reducer
+
+### deleteBackup
+```js
+function deleteBackup(state, payload){
+  // delete backup logic...
+}
+```
+#### parameters
+- **state**: The state of the original reducer
+- **payload**: redux-backup action payload
+    - reducerName: string: name of the reducer
+    - label: string: label for backup
+#### returns
+- **void**
