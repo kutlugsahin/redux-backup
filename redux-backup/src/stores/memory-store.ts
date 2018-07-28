@@ -11,15 +11,10 @@ export default class MemoryStore<TState> implements Store<TState> {
 		this.store = {};
 	}
 	backup(state: TState, { label = DEFAULT_BACKUP_LABEL }: ReduxBackupPayload) {
-		this.store[label] = JSON.stringify(state);
+		this.store[label] = state;
 	}
 	restore(state: TState, { label = DEFAULT_BACKUP_LABEL }: ReduxBackupPayload) {
-		const stored = this.store[label];
-		if (stored) {
-			return JSON.parse(stored);
-		} else {
-			return state;
-		}
+		return this.store[label] || state;
 	}
 	deleteBackup(state: TState, { label }: ReduxBackupPayload) {
 		if (label) {

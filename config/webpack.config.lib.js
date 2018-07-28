@@ -22,7 +22,7 @@ module.exports = {
 	plugins: [
 		new CopyWebpackPlugin([{
 			from: path.resolve(__dirname, '../README.md'),
-			to: path.resolve(__dirname, 'README.md')
+			to: path.join(__dirname, '..', 'redux-backup', 'README.md')
 		}]),
 	],
 	externals: {
