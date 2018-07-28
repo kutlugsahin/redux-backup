@@ -1,10 +1,9 @@
-import Reducer from './reducer';
+import { withBackup } from './reducer';
 import { backupState, restoreState, deleteBackup } from './actions';
 import { types, Store } from './types';
 
-export default Reducer;
-
 export {
+	withBackup,
 	backupState,
 	restoreState,
 	deleteBackup,

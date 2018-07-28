@@ -1,4 +1,4 @@
-import { Action } from "redux";
+import { Action, Reducer } from "redux";
 
 export enum types {
 	REDUX_RESTORE_BACKUP_ACTION_TYPE = '@@_REDUX_RESTORE/BACKUP',
@@ -23,3 +23,5 @@ export interface Store<TS> {
 	restore: RestoreHandler<TS>;
 	deleteBackup: Handler<TS>;
 }
+
+export type BackupReducer = <TS, TA extends Action>(reducer: Reducer<TS, TA>, reducerName: string, store?: Store<TS>) => Reducer<TS, TA>;

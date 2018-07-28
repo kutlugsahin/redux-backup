@@ -1,5 +1,5 @@
 import { AnyAction, Action } from "redux";
-import restorable, { backupState, restoreState } from "redux-backup";
+import { withBackup, backupState, restoreState } from "redux-backup";
 
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_USER = 'UPDATE_USER';
@@ -45,7 +45,7 @@ export const restoreUserReducer = (label?: string) => {
 	return restoreState(USER_REDUCER_KEY, label);
 }
 
-export default restorable((state: User[] = [], action: AnyAction) => {
+export default withBackup((state: User[] = [], action: AnyAction) => {
 	switch (action.type) {
 		case ADD_USER:
 			const newusers = Array.isArray(action.payload) ? action.payload : [action.payload];

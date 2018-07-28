@@ -35,4 +35,4 @@ function reducer<TS, TA extends Action>(reducer: Reducer<TS, TA>, reducerName: s
 	}
 }
 
-export default reducer;
+export const withBackup = reducer;
