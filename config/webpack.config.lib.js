@@ -7,7 +7,9 @@ module.exports = {
 	entry: path.join(libPath, 'src', 'index.ts'),
 	output: {
 		path: path.resolve(libPath, 'dist/'),
-		filename: 'index.js'
+		filename: 'index.js',
+		library: 'ReduxBackup',
+		libraryTarget: 'umd'
 	},
 	resolve: {
 		// Add `.ts` and `.tsx` as a resolvable extension.
