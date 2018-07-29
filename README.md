@@ -4,7 +4,7 @@ Higher order reducer to backup and restore reducer states inspired by [undo hist
 
 ## Motivation
 
-Most of the applications involves editing data that is retrieved by a rest API. Reverting changes to the original data set is a desired feature in most applications. The trivial approach is either copying the original data to somewhere in the appliction or re-fetching the data from server which is inefficient most of the time. Copying the data and restoring it to the reducer will require additional steps and parameters in reducers, action types and action creators which will be repeated for every reducer that you want to be revertable. This library aims to provide a solution for this in redux way.
+Most of the applications involves editing data that is retrieved by a rest API. Reverting changes to the original data set is a desired feature in most applications. The trivial approach is either copying the original data to somewhere in the application or re-fetching the data from server which is inefficient most of the time. Copying the data and restoring it to the reducer will require additional steps and parameters in reducers, action types and action creators which will be repeated for every reducer that you want to be revertable. This library aims to provide a solution for this in redux way.
 
 ## Installation
 
