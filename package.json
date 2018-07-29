@@ -1,7 +1,7 @@
 {
   "name": "redux-backup",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "dependencies": {
     "@types/react-redux": "^6.0.5",
     "autoprefixer": "7.1.6",
