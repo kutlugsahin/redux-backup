@@ -97,7 +97,7 @@ function withBackup(reducer, reducerName, store)
 #### parameters
 - **reducer**: `reducer` : A redux reducer.
 - **reducerName**: `string` : The enhanced reducer with this name will later be targeted by the **backupState**, **restoreState** and **deleteBackup** action creators.
-- **store**: `optional store object` : The object that you can provide for custom backup and restore logic. See [store sction](#store)
+- **store**: `optional store object` : The object that you can provide for custom backup and restore logic. See [store sction](#store). When omited default store is applies which keeps backups in memory.
 #### returns
 - **reducer**: enhanced reducer
 
@@ -145,7 +145,7 @@ function deleteBackup(reducerName, label)
 
 
 ## Store
-The object that you can provide withBackup function to customize how states will be backup and restored. Store object must have three functions namely **backup** **restore** **deleteBackup** which will be called with respect to dispatched actions.
+The object that you can provide withBackup function to customize how states will be backup and restored. Store object must have three functions namely **backup** **restore** **deleteBackup** which will be called with respect to dispatched actions. Default store is a memory store.
 ```js
 const store = {
   backup,
