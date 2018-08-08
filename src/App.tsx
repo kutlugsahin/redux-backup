@@ -15,7 +15,11 @@ interface AppProps {
   backups: Backup[];
 }
 
-class App extends React.Component<AppProps> {
+interface AppState {
+  
+}
+
+class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
     this.updateUser = this.updateUser.bind(this);
@@ -30,13 +34,13 @@ class App extends React.Component<AppProps> {
             <div className="col">
               <h1>Redux-Backup</h1></div>
           </div>
-          <br/>
+          <br />
           <div className="row">
             <div className="col">
               <div className="user-list-box">
-                <h3>Users</h3>
+                <h3>Users</h3>                
                 <UserList />
-                <br/>
+                <br />
                 <div className="action-buttons">
                   <button className="btn btn-outline-primary btn-block" onClick={this.backup}>Backup Users</button>
                 </div>
@@ -67,10 +71,10 @@ class App extends React.Component<AppProps> {
     const lastBackup = backups[backups.length - 1];
     let nextVersion = 1;
     if (lastBackup) {
-      nextVersion = (+lastBackup.label.split(' ')[1]) + 1;
+      nextVersion = (+lastBackup.label.split(':')[1]) + 1;
     }
 
-    backupUserReducer(`Backup:Label ${nextVersion}`);
+    backupUserReducer(`Backup:${nextVersion}`);
   }
 }
 
@@ -85,7 +89,7 @@ function mapDispatch(dispatch: Dispatch) {
 function mapsState(store) {
   return {
     user: store.user,
-		backups: store.backups
+    backups: store.backups
   }
 }
 

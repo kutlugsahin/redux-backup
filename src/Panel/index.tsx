@@ -37,7 +37,7 @@ class Panel extends React.Component<PanelProps> {
 			nextVersion = (+lastBackup.label.split(' ')[1]) + 1;
 		}
 
-		backupUserReducer(`Backup:Label ${nextVersion}`);
+		backupUserReducer(`Backup:${nextVersion}`);
 	}
 
 	restore(item: Backup) {

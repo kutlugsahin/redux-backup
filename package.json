@@ -2,6 +2,13 @@
   "name": "redux-backup",
   "version": "0.1.0",
   "private": true,
+  "description": "Higher order reducer to backup and restore reducer states",
+  "author": "Kutlu Sahin",
+  "homepage": "https://kutlugsahin.github.io/redux-backup/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kutlugsahin/redux-backup"
+  },
   "dependencies": {
     "@types/react-redux": "^6.0.5",
     "autoprefixer": "7.1.6",
@@ -51,7 +58,8 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "build:lib": "webpack -p --config config/webpack.config.lib.js",
-    "publish": "npm run build:lib && npm publish redux-backup"
+    "publish": "npm run build:lib && npm publish redux-backup",
+    "deploy": "npm run build && gh-pages -d build"
   },
   "devDependencies": {
     "@types/jest": "^23.3.0",
@@ -59,6 +67,7 @@
     "@types/react": "^16.4.6",
     "@types/react-dom": "^16.0.6",
     "copy-webpack-plugin": "^4.5.2",
+    "gh-pages": "^1.2.0",
     "typescript": "^2.9.2"
   },
   "jest": {

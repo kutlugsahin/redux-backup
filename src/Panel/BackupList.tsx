@@ -28,8 +28,8 @@ class BackupList extends React.Component<BackupListProps> {
 
 	renderItem(item: Backup, index: number) {
 		return (
-			<li className="list-group-item backup-item" key={index} onClick={_ => this.props.onBackupClick(item)}>
-				<div>{item.label} Backup Time:{item.date.toLocaleTimeString()} <button type="button" style={{ float: 'right' }} className="btn btn-outline-success btn-sm">restore</button></div>
+			<li className="list-group-item backup-item" key={index}>
+				<div>{item.label} - Backup Time:{item.date.toLocaleTimeString()} <button type="button" style={{ float: 'right' }} className="btn btn-outline-success btn-sm" onClick={_ => this.props.onBackupClick(item)}>restore</button></div>
 			</li>
 		)
 	}
