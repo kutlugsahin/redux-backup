@@ -2,7 +2,7 @@
   "name": "redux-backup",
   "version": "0.1.0",
   "private": true,
-  "description": "Higher order reducer to backup and restore reducer states",
+  "description": "Higher order reducer to backup and restore Redux reducer states",
   "author": "Kutlu Sahin",
   "homepage": "https://kutlugsahin.github.io/redux-backup/",
   "repository": {
