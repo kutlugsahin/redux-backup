@@ -1,6 +1,6 @@
 # redux-backup
 
-Higher order reducer to backup and restore reducer states inspired by [undo history recipe](https://redux.js.org/recipes/implementing-undo-history)
+Higher order Redux reducer to backup and restore reducer states. Inspired by [undo history recipe](https://redux.js.org/recipes/implementing-undo-history)
 
 ## Motivation
 
