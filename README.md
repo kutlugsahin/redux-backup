@@ -145,7 +145,7 @@ function deleteBackup(reducerName, label)
 
 
 ## Store
-The object that you can provide withBackup function to customize how states will be backup and restored. Store object must have three functions namely **backup** **restore** **deleteBackup** which will be called with respect to dispatched actions. Default store is a memory store.
+The object that you can optionally provide to **withBackup** function to customize how states will be backup and restored. Store object must have three functions namely **backup** **restore** **deleteBackup** which will be called with respect to dispatched actions. Default store (a memory store) is used if no custom store is provided.
 ```js
 const store = {
   backup,
