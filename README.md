@@ -20,19 +20,19 @@ Most of the applications involves editing data that is retrieved by a rest API. 
 import { withBackup } from 'redux-backup';
 
 const userReducer = (state, action) => {
-	switch (action.type) {
-		case 'USER_ADD':
-			// some code
-			break;
-		case 'USER_DELETE':
-			// some code
-			break;
-		case 'USER_UPDATE':
-			// some code
-			break;
-		default:
-			return state;
-	}
+  switch (action.type) {
+    case 'USER_ADD':
+      // some code
+      break;
+    case 'USER_DELETE':
+      // some code
+      break;
+    case 'USER_UPDATE':
+      // some code
+      break;
+    default:
+      return state;
+  }
 }
 
 export default withBackup(userResucer, 'USER_REDUCER_NAME');
