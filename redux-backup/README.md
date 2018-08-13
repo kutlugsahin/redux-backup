@@ -1,10 +1,13 @@
 # redux-backup
 
-Higher order reducer to backup and restore reducer states inspired by [undo history recipe](https://redux.js.org/recipes/implementing-undo-history)
+Higher order Redux reducer to backup and restore reducer states. Inspired by [undo history recipe](https://redux.js.org/recipes/implementing-undo-history)
 
 ## Motivation
 
-Most of the applications involves editing data that is retrieved by a rest API. Reverting changes to the original data set is a desired feature in most applications. The trivial approach is either copying the original data to somewhere in the appliction or re-fetching the data from server which is inefficient most of the time. Copying the data and restoring it to the reducer will require additional steps and parameters in reducers, action types and action creators which will be repeated for every reducer that you want to be revertable. This library aims to provide a solution for this in redux way.
+Most of the applications involves editing data that is retrieved by a rest API. Reverting changes to the original data set is a desired feature in most applications. The trivial approach is either copying the original data to somewhere in the application or re-fetching the data from server which is inefficient most of the time. Copying the data and restoring it to the reducer will require additional steps and parameters in reducers, action types and action creators which will be repeated for every reducer that you want to be revertable. This library aims to provide a solution for this in redux way.
+
+### Demo
+[https://kutlugsahin.github.io/redux-backup/](https://kutlugsahin.github.io/redux-backup/)
 
 ## Installation
 
@@ -16,7 +19,7 @@ Most of the applications involves editing data that is retrieved by a rest API. 
 ```jsx
 import { withBackup } from 'redux-backup';
 
-const userReducer = (state, action){
+const userReducer = (state, action) => {
   switch (action.type) {
     case 'USER_ADD':
       // some code
@@ -57,7 +60,6 @@ class UserList extends Component {
         {this.renderUsers()}
         <button onClick={() => this.props.backup()}>Backup</button>
         <button onClick={() => this.props.restore()}>Restore</button>
-        <button>Restore</button>
       </div>
     )
   }
@@ -97,7 +99,7 @@ function withBackup(reducer, reducerName, store)
 #### parameters
 - **reducer**: `reducer` : A redux reducer.
 - **reducerName**: `string` : The enhanced reducer with this name will later be targeted by the **backupState**, **restoreState** and **deleteBackup** action creators.
-- **store**: `optional store object` : The object that you can provide for custom backup and restore logic. See [store sction](#store)
+- **store**: `optional store object` : The object that you can provide for custom backup and restore logic. See [store sction](#store). When omited default store is applies which keeps backups in memory.
 #### returns
 - **reducer**: enhanced reducer
 
@@ -145,7 +147,7 @@ function deleteBackup(reducerName, label)
 
 
 ## Store
-The object that you can provide withBackup function to customize how states will be backup and restored. Store object must have three functions namely **backup** **restore** **deleteBackup** which will be called with respect to dispatched actions.
+The object that you can optionally provide to **withBackup** function to customize how states will be backup and restored. Store object must have three functions namely **backup** **restore** **deleteBackup** which will be called with respect to dispatched actions. Default store (a memory store) is used if no custom store is provided.
 ```js
 const store = {
   backup,
