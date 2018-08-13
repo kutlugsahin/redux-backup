@@ -1,9 +1,25 @@
 {
   "name": "redux-backup",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "higher order reducer to backup and restore",
+  "keywords": [
+    "redux",
+    "reducer",
+    "backup",
+    "restore",
+    "revert",
+    "undo",
+    "higher order reducer"
+  ],
+  "author": {
+    "name": "Kutlu Sahin",
+    "email": "kutlugsahin@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kutlugsahin/redux-backup.git"
+  },
   "main": "dist/index.js",
-  "author": "kutlu sahin",
   "license": "ISC",
   "types": "dist/types/index.d.ts"
 }
