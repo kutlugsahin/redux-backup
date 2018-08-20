@@ -79,7 +79,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     backup,
     restore
-  })
+  },dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
@@ -144,6 +144,16 @@ function deleteBackup(reducerName, label)
 - **label**: `optional string` : The label of a specific backup to be deleted. If no label is provided all backups of the reducer state will be deleted.
 #### returns
 - **action**: A redux action to be dispatched.
+
+## actionTypes
+
+Action types of the actions of **redux-action**. This is useful if you want to handle them in other reducers
+```js 
+import { actionTypes } from 'redux-restore';
+```
+- actionTypes.BACKUP = '@@_REDUX_BACKUP/BACKUP' 
+- actionTypes.RESTORE = '@@_REDUX_BACKUP/RESTORE' 
+- actionTypes.DELETE = '@@_REDUX_BACKUP/DELETE' 
 
 
 ## Store
