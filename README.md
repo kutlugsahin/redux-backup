@@ -60,7 +60,6 @@ class UserList extends Component {
         {this.renderUsers()}
         <button onClick={() => this.props.backup()}>Backup</button>
         <button onClick={() => this.props.restore()}>Restore</button>
-        <button>Restore</button>
       </div>
     )
   }
