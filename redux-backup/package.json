@@ -1,6 +1,6 @@
 {
   "name": "redux-backup",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "higher order reducer to backup and restore",
   "keywords": [
     "redux",
