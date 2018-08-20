@@ -147,7 +147,7 @@ function deleteBackup(reducerName, label)
 
 ## actionTypes
 
-Action types of the actions of **redux-action**. This is useful if you want to handle them in other reducers
+Action types of the actions of **redux-backup**. This is useful if you want to handle them in other reducers
 ```js 
 import { actionTypes } from 'redux-restore';
 ```
