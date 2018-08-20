@@ -63,3 +63,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
+
+
+import { actionTypes } from 'redux-backup';
+
+actionTypes.BACKUP

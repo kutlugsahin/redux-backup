@@ -9,6 +9,6 @@ const createActionCreater = (actionType: string) =>
 		}
 	});
 
-export const restoreState = createActionCreater(types.REDUX_RESTORE_RESTORE_ACTION_TYPE);
-export const backupState = createActionCreater(types.REDUX_RESTORE_BACKUP_ACTION_TYPE);
-export const deleteBackup = createActionCreater(types.REDUX_RESTORE_BACKUP_ACTION_TYPE);
+export const restoreState = createActionCreater(types.RESTORE);
+export const backupState = createActionCreater(types.BACKUP);
+export const deleteBackup = createActionCreater(types.BACKUP);

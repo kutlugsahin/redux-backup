@@ -8,12 +8,12 @@ export interface Backup {
 
 export default (state: Backup[] = [], action: AnyAction) => {
 	switch (action.type) {
-		case actionTypes.REDUX_RESTORE_BACKUP_ACTION_TYPE:
+		case actionTypes.BACKUP:
 			return [...state, {
 				label: action.payload.label,
 				date: new Date()
 			}];
-		case actionTypes.REDUX_RESTORE_DELETE_ACTION_TYPE:
+		case actionTypes.DELETE:
 			return state.filter(p => p.label !== action.payload.label);
 		default:
 			return state;

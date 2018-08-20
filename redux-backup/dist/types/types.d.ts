@@ -1,8 +1,8 @@
 import { Action, Reducer } from "redux";
 export declare enum types {
-    REDUX_RESTORE_BACKUP_ACTION_TYPE = "@@_REDUX_BACKUP/BACKUP",
-    REDUX_RESTORE_RESTORE_ACTION_TYPE = "@@_REDUX_BACKUP/RESTORE",
-    REDUX_RESTORE_DELETE_ACTION_TYPE = "@@_REDUX_BACKUP/DELETE"
+    BACKUP = "@@_REDUX_BACKUP/BACKUP",
+    RESTORE = "@@_REDUX_BACKUP/RESTORE",
+    DELETE = "@@_REDUX_BACKUP/DELETE"
 }
 export interface ReduxBackupPayload {
     reducerName: string;

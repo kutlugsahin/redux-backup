@@ -9,9 +9,9 @@ const getPayload = (action: Action): ReduxBackupPayload => {
 
 const mapActionTypeToStoreFunction = <TState, TAction extends Action>(store: Store<TState>) => {
 	const map = {
-		[types.REDUX_RESTORE_BACKUP_ACTION_TYPE]: store.backup,
-		[types.REDUX_RESTORE_DELETE_ACTION_TYPE]: store.deleteBackup,
-		[types.REDUX_RESTORE_RESTORE_ACTION_TYPE]: store.restore,
+		[types.BACKUP]: store.backup,
+		[types.DELETE]: store.deleteBackup,
+		[types.RESTORE]: store.restore,
 	}
 
 	return (action: TAction): RestoreHandler<TState> => map[action.type];

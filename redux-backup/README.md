@@ -89,7 +89,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(UserList);
 
 ## withBackup
 ```js 
-import { withBackup } from 'redux-backup';
+import { withBackup } from 'redux-restore';
 ```
 The function to wrap the original reducer to enable backup and restore states.
 
@@ -106,7 +106,7 @@ function withBackup(reducer, reducerName, store)
 ## backupState
 The action creater to backup the reducer targeted with reducerName.
 ```js 
-import { backupState } from 'redux-backup';
+import { backupState } from 'redux-restore';
 ```
 ```js 
 function backupState(reducerName, label)
@@ -120,7 +120,7 @@ function backupState(reducerName, label)
 ## restoreState
 The action creater to backup the reducer targeted with reducerName.
 ```js 
-import { restoreState } from 'redux-backup';
+import { restoreState } from 'redux-restore';
 ```
 ```js 
 function restoreState(reducerName, label)
@@ -134,7 +134,7 @@ function restoreState(reducerName, label)
 ## deleteBackup
 The action creater to backup the reducer targeted with reducerName.
 ```js 
-import { deleteBackup } from 'redux-backup';
+import { deleteBackup } from 'redux-restore';
 ```
 ```js 
 function deleteBackup(reducerName, label)
