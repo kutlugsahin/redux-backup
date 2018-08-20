@@ -1,6 +1,6 @@
 import { withBackup } from 'redux-backup';
 
-const userReducer = (state, action){
+const userReducer = (state, action) => {
 	switch (action.type) {
 		case 'USER_ADD':
 			// some code
