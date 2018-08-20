@@ -35,7 +35,7 @@ const userReducer = (state, action) => {
   }
 }
 
-export default withBackup(userResucer, 'USER_REDUCER_NAME');
+export default withBackup(userReducer, 'USER_REDUCER_NAME');
 ```
 
 #### SimpleComponent.jsx
@@ -79,7 +79,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     backup,
     restore
-  },dispatch);
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
@@ -89,7 +89,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(UserList);
 
 ## withBackup
 ```js 
-import { withBackup } from 'redux-restore';
+import { withBackup } from 'redux-backup';
 ```
 The function to wrap the original reducer to enable backup and restore states.
 
@@ -106,7 +106,7 @@ function withBackup(reducer, reducerName, store)
 ## backupState
 The action creater to backup the reducer targeted with reducerName.
 ```js 
-import { backupState } from 'redux-restore';
+import { backupState } from 'redux-backup';
 ```
 ```js 
 function backupState(reducerName, label)
@@ -120,7 +120,7 @@ function backupState(reducerName, label)
 ## restoreState
 The action creater to backup the reducer targeted with reducerName.
 ```js 
-import { restoreState } from 'redux-restore';
+import { restoreState } from 'redux-backup';
 ```
 ```js 
 function restoreState(reducerName, label)
@@ -134,7 +134,7 @@ function restoreState(reducerName, label)
 ## deleteBackup
 The action creater to backup the reducer targeted with reducerName.
 ```js 
-import { deleteBackup } from 'redux-restore';
+import { deleteBackup } from 'redux-backup';
 ```
 ```js 
 function deleteBackup(reducerName, label)
@@ -154,7 +154,6 @@ import { actionTypes } from 'redux-restore';
 - actionTypes.BACKUP = '@@_REDUX_BACKUP/BACKUP' 
 - actionTypes.RESTORE = '@@_REDUX_BACKUP/RESTORE' 
 - actionTypes.DELETE = '@@_REDUX_BACKUP/DELETE' 
-
 
 ## Store
 The object that you can optionally provide to **withBackup** function to customize how states will be backup and restored. Store object must have three functions namely **backup** **restore** **deleteBackup** which will be called with respect to dispatched actions. Default store (a memory store) is used if no custom store is provided.
